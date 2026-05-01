@@ -1,0 +1,43 @@
+html {
+  margin: 0;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+  scroll-padding: 0;
+}
+
+body {
+  margin: 0;
+  animation: bg-change linear both;
+  font-family: 'Roboto', sans-serif;
+  animation-timeline: scroll(root);
+}
+
+.magazine-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(100px) scale(0.8); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+}
+
+.content {
+  animation: reveal cubic-bezier(0, 0.28, 0.68, 1) both;
+  animation-duration: auto;
+  animation-timeline: view();
+  animation-range: entry 0% entry 80%;
+}
+
+@keyframes bg-change {
+  0%   { background-color: #f6e0a4; animation-timing-function: ease-in-out; }
+  14%  { background-color: #ff608c; animation-timing-function: ease-in-out; }
+  28%  { background-color: #ffffff; animation-timing-function: ease-in-out; }
+  42%  { background-color: #00c1b5; animation-timing-function: ease-in-out; }
+  56%  { background-color: #ff6519; animation-timing-function: ease-in-out; }
+  70%  { background-color: #ffbe00; animation-timing-function: ease-in-out; }
+  84%  { background-color: #1d3fbb; animation-timing-function: ease-in-out; }
+  100% { background-color: #e30512; }
+}
